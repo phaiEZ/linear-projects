@@ -352,7 +352,7 @@ class PageOne(tk.Frame):
         elif " " in data:
             temp.configure(text ="กรุณากรอกรหัสผ่านใหม่ (ในรหัสผ่านต้องไม่มีช่องว่าง)")
         else:
-            temp.configure(text ="กำลังคำนวน",fg="white")
+            temp.configure(text ="กำลังคำนวณ",fg="white")
             temp.pack()
             global password
             password = data
@@ -365,7 +365,7 @@ class PageOne(tk.Frame):
         temp.pack(padx=0, pady=2, side=tk.TOP,anchor=tk.W)
         x = tk.Entry(self, bd = 5,font=('Georgia 20'), width=35,show = "•")
        #tk.Button(self, text='คำนวน', font=("FC Ekaluck", 20),width=15, height=1, command=lambda: master.switch_frame(PageTwo) ).pack(padx=5, pady=50, side = tk.BOTTOM ,anchor=tk.W)
-        tk.Button(self, text='คำนวน', font=("FC Ekaluck", 20),width=15, height=1, command=lambda:self.gonext(master,x.get(),temp)).pack(padx=5, pady=50, side = tk.BOTTOM ,anchor=tk.W)
+        tk.Button(self, text='คำนวณ', font=("FC Ekaluck", 20),width=15, height=1, command=lambda:self.gonext(master,x.get(),temp)).pack(padx=5, pady=50, side = tk.BOTTOM ,anchor=tk.W)
         
         x.pack(padx=0, pady=0 ,side=tk.LEFT, anchor=tk.W )
         
@@ -525,7 +525,7 @@ class PageTwo(tk.Frame):
         length_input2 = tk.Scale(tab3, from_=1, to=10, orient=tk.HORIZONTAL, length= 300,showvalue=True,variable = self.v2).grid(column = 2, row = 3,padx = 5,pady = 0,sticky='W')
         
         
-        textpassgen = tk.Label(tab4, text ="รหัสผ่านที่สร้าง", font=("FC Ekaluck", 13)).grid(column = 0, row = 0,padx =  5,pady = 0,sticky='W')
+        textpassgen = tk.Label(tab4, text ="", font=("FC Ekaluck", 13)).grid(column = 0, row = 0,padx =  5,pady = 0,sticky='W')
         
         
         btn = tk.Button(tab3, bg='#000000',fg='#b7f731',relief='flat',text='สร้างรหัสผ่าน',width=20,command=lambda:self.Genpass(self.v1.get(),self.lowerChar.get(),self.upperChar.get(),self.Num.get(),self.spacialChar.get(),self.v2.get(),tab4)).grid(column = 5, row = 4,padx = 5,pady = 10,sticky='W')
