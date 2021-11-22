@@ -456,7 +456,7 @@ class PageTwo(tk.Frame):
         if num == 0:
             print("No Similiar Password")
         else:
-            # print(f"Your password is similiar with other {similiarPasswordCount} passwords")
+            #print(f"Your password is similiar with other {similiarPasswordCount} passwords")
             # print(f"Top {num} Password similar with \"{password}\" :")
             for _ in range(5):
                 if lst_data_similarity != []:
@@ -484,16 +484,22 @@ class PageTwo(tk.Frame):
         tabControl.add(tab4, text ='รหัสผ่านที่สร้างขึ้น')
 
         tabControl.pack(padx=0, pady=40 ,side=tk.BOTTOM,anchor=tk.W)
+
         temp = ""
         count  = 1
         if(len(top_5_max_similarity ) == 0):
             temp += "ไม่มีรหัสผ่านที่คล้ายกับรหัสผ่านของคุณ"
         else:
             for i in top_5_max_similarity:
-                temp += str(count) +".) "+str(i[1]) + "    "+ "{:.12f}".format(round(i[0], 10)* 100.0)  + "%"+ "\n"
+                temp += str(count) +".) "+str(i[1]) + "    "+ "{:.12f}".format(round(i[0], 10)* 100.0)  + "%" 
+                if(count <= 4):
+                    temp += "\n"
                 count += 1
 
-        ttk.Label(tab1, text =temp, font=("FC Ekaluck", 22)).grid(column = 0, row = 0,padx = 20,pady = 20)  
+        ttk.Label(tab1, text =temp, font=("FC Ekaluck", 22)).grid(column = 0, row = 0,padx = 20,pady = 5,sticky='W')  
+        temp1 = "รหัสผ่านของคุณคล้ายคลึงกับอีก "+str(similiarPasswordCount)+" รหัสผ่าน\n"
+        temp1 += "เวลาการคำนวน "+str(endtime-starttime)+" วินาที"
+        ttk.Label(tab1, text =temp1, font=("FC Ekaluck", 15)).grid(column = 0, row = 1,padx = 20,pady = 0,sticky='W')  
         # ttk.Label(tab2, text ="Garph", font=("FC Ekaluck", 22)).grid(column = 0, row = 0,padx = 20,pady = 20)  
         
         ttk.Label(tab3, text ="ตัวเลือกการสร้างรหัสผ่าน", font=("FC Ekaluck", 15)).grid(column = 0, row = 0,padx =  5,pady = 10,sticky='W')
