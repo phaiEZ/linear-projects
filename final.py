@@ -418,7 +418,7 @@ class PageTwo(tk.Frame):
                 count += 1
             
             w = tk.Text(tab, height=1, borderwidth=0)
-            w.insert(1.0, "*** การสร้างรหัสผ่านจำเป็นต้องเลือกตัวเลือกซักข้อ ***")
+            w.insert(1.0, "*** การสร้างรหัสผ่านจำเป็นต้องเลือกอย่างน้อย 1 ตัวเลือก ***")
             w.grid(column = 0, row = 1,padx =  5,pady = 0,sticky='S')
             w.configure(state="disabled")
             count += 1
@@ -490,7 +490,7 @@ class PageTwo(tk.Frame):
             temp += "ไม่มีรหัสผ่านที่คล้ายกับรหัสผ่านของคุณ"
         else:
             for i in top_5_max_similarity:
-                temp += str(count) +".) "+str(i[1]) + " "+str(round(i[0], 10)*100)  + "%"+ "\n"
+                temp += str(count) +".) "+str(i[1]) + "\t\t "+ "{:.12f}".format(round(i[0], 10)* 100.0)  + "%"+ "\n"
                 count += 1
 
         ttk.Label(tab1, text =temp, font=("FC Ekaluck", 22)).grid(column = 0, row = 0,padx = 20,pady = 20)  
