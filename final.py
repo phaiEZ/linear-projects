@@ -525,7 +525,7 @@ class PageTwo(tk.Frame):
         length_input2 = tk.Scale(tab3, from_=1, to=10, orient=tk.HORIZONTAL, length= 300,showvalue=True,variable = self.v2).grid(column = 2, row = 3,padx = 5,pady = 0,sticky='W')
         
         
-        textpassgen = tk.Label(tab4, text ="", font=("FC Ekaluck", 13)).grid(column = 0, row = 0,padx =  5,pady = 0,sticky='W')
+        textpassgen = tk.Label(tab4, text ="รหัสผ่านที่สร้าง", font=("FC Ekaluck", 13)).grid(column = 0, row = 0,padx =  5,pady = 0,sticky='W')
         
         
         btn = tk.Button(tab3, bg='#000000',fg='#b7f731',relief='flat',text='สร้างรหัสผ่าน',width=20,command=lambda:self.Genpass(self.v1.get(),self.lowerChar.get(),self.upperChar.get(),self.Num.get(),self.spacialChar.get(),self.v2.get(),tab4)).grid(column = 5, row = 4,padx = 5,pady = 10,sticky='W')
