@@ -210,7 +210,7 @@ def lcs(keyword:str) -> list:
 def find_keyword(keyword:str) -> list:    
     lst_lcs = lcs(keyword)
     with open(file_name, "r", encoding = "latin-1") as file:
-        lst_keyword = [line.replace("\n", "") for line in file if [True for index in lst_lcs if index in line and 2*len(index) >= len(line)] != []] #
+        lst_keyword = [line.replace("\n", "") for line in file if [True for index in lst_lcs if index in line] != []] #
         
     if lst_keyword != []:
         with open("similarity.json") as file:
@@ -436,7 +436,7 @@ class PageTwo(tk.Frame):
         #print("page2",password)
         starttime = time.time()
         lst_keyword = find_keyword(password)
-        lst_lcs = lcs(password)
+        lst_lcs = list(set(lcs(password)))
         lst_data_similarity = []
         for keyword in lst_keyword:
             data_similarity = getBestLcsWindow(lst_lcs, keyword, password, True)
@@ -490,7 +490,7 @@ class PageTwo(tk.Frame):
             temp += "ไม่มีรหัสผ่านที่คล้ายกับรหัสผ่านของคุณ"
         else:
             for i in top_5_max_similarity:
-                temp += str(count) +".) "+str(i[1]) + "\t\t "+ "{:.12f}".format(round(i[0], 10)* 100.0)  + "%"+ "\n"
+                temp += str(count) +".) "+str(i[1]) + "    "+ "{:.12f}".format(round(i[0], 10)* 100.0)  + "%"+ "\n"
                 count += 1
 
         ttk.Label(tab1, text =temp, font=("FC Ekaluck", 22)).grid(column = 0, row = 0,padx = 20,pady = 20)  
